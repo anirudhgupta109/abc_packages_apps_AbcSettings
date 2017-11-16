@@ -52,6 +52,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements Prefer
     private static final String KEY_NAVIGATION_HEIGHT_PORT = "navbar_height_portrait";
     private static final String KEY_NAVIGATION_HEIGHT_LAND = "navbar_height_landscape";
     private static final String KEY_NAVIGATION_WIDTH = "navbar_width";
+    private static final String KEY_PULSE_SETTINGS = "pulse_settings";
 
     private SwitchPreference mNavbarVisibility;
     private ListPreference mNavbarMode;
@@ -63,6 +64,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements Prefer
     private CustomSeekBarPreference mBarHeightPort;
     private CustomSeekBarPreference mBarHeightLand;
     private CustomSeekBarPreference mBarWidth;
+    private PreferenceScreen mPulseSettings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements Prefer
         mDefaultSettings = (Preference) findPreference(KEY_DEFAULT_NAVBAR_SETTINGS);
         mFlingSettings = (PreferenceScreen) findPreference(KEY_FLING_NAVBAR_SETTINGS);
         mSmartbarSettings = (PreferenceScreen) findPreference(KEY_SMARTBAR_SETTINGS);
+        mPulseSettings = (PreferenceScreen) findPreference(KEY_PULSE_SETTINGS);
 
         boolean showing = Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.NAVIGATION_BAR_VISIBLE,
@@ -125,6 +128,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements Prefer
                 mSmartbarSettings.setSelectable(false);
                 mFlingSettings.setEnabled(false);
                 mFlingSettings.setSelectable(false);
+                mPulseSettings.setEnabled(false);
+                mPulseSettings.setSelectable(false);
                 break;
             case 1:
                 mDefaultSettings.setEnabled(false);
@@ -133,6 +138,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements Prefer
                 mSmartbarSettings.setSelectable(true);
                 mFlingSettings.setEnabled(false);
                 mFlingSettings.setSelectable(false);
+                mPulseSettings.setEnabled(true);
+                mPulseSettings.setSelectable(true);
                 break;
             case 2:
                 mDefaultSettings.setEnabled(false);
@@ -141,6 +148,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements Prefer
                 mSmartbarSettings.setSelectable(false);
                 mFlingSettings.setEnabled(true);
                 mFlingSettings.setSelectable(true);
+                mPulseSettings.setEnabled(true);
+                mPulseSettings.setSelectable(true);
                 break;
         }
     }
