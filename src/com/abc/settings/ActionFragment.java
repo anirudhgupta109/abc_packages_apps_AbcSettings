@@ -41,6 +41,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
 
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -116,9 +117,9 @@ public class ActionFragment extends SettingsPreferenceFragment implements
 
     @Override
     public Dialog onCreateDialog(int dialogId) {
-        Dialog dialog = null;
         switch (dialogId) {
-            case DIALOG_CATEGORY:
+            case DIALOG_CATEGORY: {
+                Dialog dialog;
                 final DialogInterface.OnClickListener categoryClickListener = new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
@@ -132,8 +133,10 @@ public class ActionFragment extends SettingsPreferenceFragment implements
                                 categoryClickListener)
                         .setNegativeButton(getString(android.R.string.cancel), null)
                         .create();
-                break;
-            case DIALOG_CUSTOM_ACTIONS:
+                return dialog;
+            }
+            case DIALOG_CUSTOM_ACTIONS: {
+                Dialog dialog;
                 final CustomActionListAdapter adapter = new CustomActionListAdapter(getActivity());
                 if (!usesExtendedActionsList()) {
                     adapter.removeAction(ActionHandler.SYSTEMUI_TASK_HOME);
@@ -151,9 +154,21 @@ public class ActionFragment extends SettingsPreferenceFragment implements
                         .setAdapter(adapter, customActionClickListener)
                         .setNegativeButton(getString(android.R.string.cancel), null)
                         .create();
-                break;
+                return dialog;
+            }
         }
-        return dialog;
+        return super.onCreateDialog(dialogId);
+    }
+
+    @Override
+    public int getDialogMetricsCategory(int dialogId) {
+        switch (dialogId) {
+            case DIALOG_CATEGORY:
+            case DIALOG_CUSTOM_ACTIONS:
+                return MetricsEvent.ABC;
+            default:
+                return 0;
+        }
     }
 
     // subclass overrides to include back and home actions
