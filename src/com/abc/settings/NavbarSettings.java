@@ -27,7 +27,6 @@ import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
-import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 
@@ -56,15 +55,15 @@ public class NavbarSettings extends SettingsPreferenceFragment implements Prefer
 
     private SwitchPreference mNavbarVisibility;
     private ListPreference mNavbarMode;
-    private PreferenceScreen mFlingSettings;
+    private Preference mFlingSettings;
     private PreferenceCategory mNavInterface;
     private PreferenceCategory mNavGeneral;
-    private PreferenceScreen mSmartbarSettings;
+    private Preference mSmartbarSettings;
     private Preference mDefaultSettings;
     private CustomSeekBarPreference mBarHeightPort;
     private CustomSeekBarPreference mBarHeightLand;
     private CustomSeekBarPreference mBarWidth;
-    private PreferenceScreen mPulseSettings;
+    private Preference mPulseSettings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,9 +77,9 @@ public class NavbarSettings extends SettingsPreferenceFragment implements Prefer
         mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
         mNavbarMode = (ListPreference) findPreference(KEY_NAVBAR_MODE);
         mDefaultSettings = (Preference) findPreference(KEY_DEFAULT_NAVBAR_SETTINGS);
-        mFlingSettings = (PreferenceScreen) findPreference(KEY_FLING_NAVBAR_SETTINGS);
-        mSmartbarSettings = (PreferenceScreen) findPreference(KEY_SMARTBAR_SETTINGS);
-        mPulseSettings = (PreferenceScreen) findPreference(KEY_PULSE_SETTINGS);
+        mFlingSettings = (Preference) findPreference(KEY_FLING_NAVBAR_SETTINGS);
+        mSmartbarSettings = (Preference) findPreference(KEY_SMARTBAR_SETTINGS);
+        mPulseSettings = (Preference) findPreference(KEY_PULSE_SETTINGS);
 
         boolean showing = Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.NAVIGATION_BAR_VISIBLE,
