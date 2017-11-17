@@ -70,8 +70,6 @@ public class NavbarSettings extends SettingsPreferenceFragment implements Prefer
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.abc_navbar_settings);
 
-        getActivity().getActionBar().setTitle(R.string.navigationbar_title);
-
         mNavInterface = (PreferenceCategory) findPreference(KEY_CATEGORY_NAVIGATION_INTERFACE);
         mNavGeneral = (PreferenceCategory) findPreference(KEY_CATEGORY_NAVIGATION_GENERAL);
         mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
