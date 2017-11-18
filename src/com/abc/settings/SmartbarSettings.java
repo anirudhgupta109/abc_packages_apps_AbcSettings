@@ -130,9 +130,9 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
 
     @Override
     public Dialog onCreateDialog(int dialogId) {
-        Dialog dialog = null;
         switch (dialogId) {
-            case DIALOG_RESET_CONFIRM:
+            case DIALOG_RESET_CONFIRM: {
+                Dialog dialog;
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                 alertDialog.setTitle(R.string.smartbar_factory_reset_title);
                 alertDialog.setMessage(R.string.smartbar_factory_reset_confirm);
@@ -143,8 +143,10 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
                 });
                 alertDialog.setNegativeButton(R.string.write_settings_off, null);
                 dialog = alertDialog.create();
-                break;
-            case DIALOG_RESTORE_PROFILE:
+                return dialog;
+            }
+            case DIALOG_RESTORE_PROFILE: {
+                Dialog dialog;
                 final ConfigAdapter configAdapter = new ConfigAdapter(getActivity(),
                         getConfigFiles(CONFIG_STORAGE));
                 AlertDialog.Builder configDialog = new AlertDialog.Builder(getActivity());
@@ -165,8 +167,10 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
                     }
                 });
                 dialog = configDialog.create();
-                break;
-            case DIALOG_SAVE_PROFILE:
+                return dialog;
+            }
+            case DIALOG_SAVE_PROFILE: {
+                Dialog dialog;
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 final EditText input = new EditText(getActivity());
                 builder.setTitle(getString(R.string.smartbar_config_name_edit_dialog_title));
@@ -195,9 +199,22 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
                         });
                 dialog = builder.create();
                 dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-                break;
+                return dialog;
+            }
         }
-        return dialog;
+        return super.onCreateDialog(dialogId);
+    }
+
+    @Override
+    public int getDialogMetricsCategory(int dialogId) {
+        switch (dialogId) {
+            case DIALOG_RESET_CONFIRM:
+            case DIALOG_RESTORE_PROFILE:
+            case DIALOG_SAVE_PROFILE:
+                return MetricsProto.MetricsEvent.ABC;
+            default:
+                return 0;
+        }
     }
 
     @Override
