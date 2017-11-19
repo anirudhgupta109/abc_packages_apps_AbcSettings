@@ -92,6 +92,11 @@
             android:title="@string/fling_double_left_tap"
             android:summary="@string/fling_def_summary"/>
 
+        <SwitchPreference
+            android:key="fling_keyboard_cursors"
+            android:title="@string/fling_keyboard_cursors_title"
+            android:summary="@string/fling_keyboard_cursors_summary" />
+
         <com.abc.settings.preferences.ActionPreference
             android:key="long_right_press"
             android:title="@string/fling_long_press"

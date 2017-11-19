@@ -57,6 +57,7 @@ public class FlingSettings extends ActionFragment implements
     SwitchPreference mAnimateLogo;
     SwitchPreference mShowRipple;
     SwitchPreference mTrailsEnabled;
+    SwitchPreference mKbCursors;
 
     CustomSeekBarPreference mTrailsWidth;
     CustomSeekBarPreference mLongPressTimeout;
@@ -180,6 +181,12 @@ public class FlingSettings extends ActionFragment implements
             mSwipeVertDown.setValue(val);
             mSwipeVertDown.setOnPreferenceChangeListener(this);
         }
+
+        mKbCursors = (SwitchPreference) findPreference("fling_keyboard_cursors");
+        mKbCursors.setChecked(Settings.Secure.getIntForUser(getContentResolver(),
+                Settings.Secure.FLING_KEYBOARD_CURSORS, 1,
+                UserHandle.USER_CURRENT) == 1);
+        mKbCursors.setOnPreferenceChangeListener(this);
 
         onPreferenceScreenLoaded(ActionConstants.getDefaults(ActionConstants.FLING));
     }
@@ -307,6 +314,12 @@ public class FlingSettings extends ActionFragment implements
             int val = (Integer) newValue;
             Settings.Secure.putIntForUser(getContentResolver(),
                     Settings.Secure.FLING_LONGSWIPE_THRESHOLD_DOWN_LAND, val,
+                    UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference.equals(mKbCursors)) {
+            boolean enabled = ((Boolean) newValue).booleanValue();
+            Settings.Secure.putIntForUser(getContentResolver(),
+                    Settings.Secure.FLING_KEYBOARD_CURSORS, enabled ? 1 : 0,
                     UserHandle.USER_CURRENT);
             return true;
         }
