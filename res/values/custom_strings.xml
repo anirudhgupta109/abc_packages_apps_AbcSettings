@@ -220,6 +220,7 @@
     <string name="default_string">Default</string>
     <string name="default_settings">Default settings</string>
     <string name="bottom_nav_navigation_title">Navigation bar</string>
+    <string name="fling_logo_opacity_title">Fling logo opacity</string>
 
     <!-- Actions dialog and default task values set in ActionPreference xml-->
     <string name="choose_action_title">Choose action</string>

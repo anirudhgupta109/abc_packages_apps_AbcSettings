@@ -59,6 +59,8 @@ public class FlingSettings extends ActionFragment implements
     SwitchPreference mTrailsEnabled;
     SwitchPreference mKbCursors;
 
+    CustomSeekBarPreference mLogoOpacity;
+
     CustomSeekBarPreference mTrailsWidth;
     CustomSeekBarPreference mLongPressTimeout;
 
@@ -187,6 +189,13 @@ public class FlingSettings extends ActionFragment implements
                 Settings.Secure.FLING_KEYBOARD_CURSORS, 1,
                 UserHandle.USER_CURRENT) == 1);
         mKbCursors.setOnPreferenceChangeListener(this);
+
+        mLogoOpacity = (CustomSeekBarPreference) findPreference("fling_logo_opacity");
+        int alpha = Settings.Secure.getIntForUser(getContentResolver(),
+                Settings.Secure.FLING_LOGO_OPACITY, 255,
+                UserHandle.USER_CURRENT);
+        mLogoOpacity.setValue(alpha);
+        mLogoOpacity.setOnPreferenceChangeListener(this);
 
         onPreferenceScreenLoaded(ActionConstants.getDefaults(ActionConstants.FLING));
     }
@@ -320,6 +329,12 @@ public class FlingSettings extends ActionFragment implements
             boolean enabled = ((Boolean) newValue).booleanValue();
             Settings.Secure.putIntForUser(getContentResolver(),
                     Settings.Secure.FLING_KEYBOARD_CURSORS, enabled ? 1 : 0,
+                    UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mLogoOpacity) {
+            int val = (Integer) newValue;
+            Settings.Secure.putIntForUser(getContentResolver(),
+                    Settings.Secure.FLING_LOGO_OPACITY, val,
                     UserHandle.USER_CURRENT);
             return true;
         }

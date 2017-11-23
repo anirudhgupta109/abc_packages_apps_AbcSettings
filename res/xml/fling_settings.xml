@@ -124,15 +124,27 @@
 
         <Preference
             android:key="fling_custom_logo_pick"
+            android:dependency="eos_fling_show_logo"
             android:title="@string/fling_logo_custom_logo_pick_title" />
 
         <Preference
             android:key="fling_custom_logo_gallery_pick"
+            android:dependency="eos_fling_show_logo"
             android:title="@string/fling_logo_custom_logo_image_pick_title" />
 
         <Preference
             android:key="fling_custom_logo_reset"
+            android:dependency="eos_fling_show_logo"
             android:title="@string/fling_logo_custom_logo_reset_title" />
+
+        <com.abc.settings.preferences.CustomSeekBarPreference
+            android:key="fling_logo_opacity"
+            android:dependency="eos_fling_show_logo"
+            android:title="@string/fling_logo_opacity_title"
+            android:max="255"
+            settings:min="0"
+            settings:units=""
+            android:persistent="false" />
 
         <SwitchPreference
             android:key="eos_fling_show_ripple"
