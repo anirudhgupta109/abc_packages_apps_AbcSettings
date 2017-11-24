@@ -79,6 +79,8 @@ public class FlingSettings extends ActionFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.fling_settings);
 
+        mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.fling_back_home_policy);
+
         mContext = (Context) getActivity();
         mIconPickHelper = new IconPickHelper(getActivity(), this);
 

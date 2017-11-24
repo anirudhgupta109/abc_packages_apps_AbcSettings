@@ -71,6 +71,8 @@ public class PulseSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pulse_settings);
 
+        mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.pulse_help_policy_notice_summary);
+
         mShowPulse = (SwitchPreference) findPreference("eos_fling_show_pulse");
         mShowPulse.setChecked(Settings.Secure.getIntForUser(getContentResolver(),
                 Settings.Secure.FLING_PULSE_ENABLED, 0, UserHandle.USER_CURRENT) == 1);

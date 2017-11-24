@@ -26,19 +26,22 @@
         android:title="@string/navbar_interface_title" >
 
         <ListPreference
-            android:entries="@array/systemui_navbar_mode_entries"
-            android:entryValues="@array/systemui_navbar_mode_values"
             android:key="navbar_mode"
-            android:title="@string/navbar_mode" />
+            android:title="@string/navbar_mode"
+            android:summary="@string/navbar_mode_summary"
+            android:entries="@array/systemui_navbar_mode_entries"
+            android:entryValues="@array/systemui_navbar_mode_values" />
 
         <Preference
             android:key="smartbar_settings"
             android:title="@string/smartbar_settings_title"
+            android:summary="@string/smartbar_settings_summary"
             android:fragment="com.abc.settings.SmartbarSettings" />
 
         <Preference
             android:key="fling_settings"
             android:title="@string/fling_settings"
+            android:summary="@string/fling_settings_summary"
             android:fragment="com.abc.settings.FlingSettings" />
 
         <!--<Preference

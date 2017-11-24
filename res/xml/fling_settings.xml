@@ -19,14 +19,7 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/fling_interface" >
 
-    <Preference
-        style="?android:preferenceInformationStyle"
-        android:key="eos_fling_back_home_policy"
-        android:selectable="false"
-        android:summary="@string/fling_back_home_policy"
-        android:title="@string/info_pref_note_title" />
-
-     <PreferenceCategory
+    <PreferenceCategory
         android:key="eos_actions_swipe_category"
         android:title="@string/fling_swipe_actions" >
 
@@ -59,18 +52,11 @@
             android:key="fling_left_up"
             android:title="@string/fling_left_up_swipe"
             android:summary="@string/fling_def_summary"/>
-     </PreferenceCategory>
+    </PreferenceCategory>
 
-     <PreferenceCategory
+    <PreferenceCategory
         android:key="eos_actions_tap_category"
         android:title="@string/fling_tap_actions" >
-
-        <Preference
-            style="?android:preferenceInformationStyle"
-            android:key="eos_fling_split_bar_policy"
-            android:selectable="false"
-            android:summary="@string/fling_split_bar_policy"
-            android:title="@string/info_pref_note_title" />
 
         <com.abc.settings.preferences.ActionPreference
             android:key="single_right_tap"
@@ -116,7 +102,7 @@
             android:key="eos_fling_show_logo"
             android:title="@string/fling_show_logo_title" />
 
-         <SwitchPreference
+        <SwitchPreference
             android:key="eos_fling_animate_logo"
             android:dependency="eos_fling_show_logo"
             android:title="@string/fling_animate_logo_title"
