@@ -207,6 +207,7 @@
     <string name="navbar_mode_summary">Select which navigation mode to use on your device</string>
     <string name="navbar_visibility">Allow navigation bar</string>
     <string name="navigationbar_settings_title">Navigation bar</string>
+    <string name="bottom_nav_navigation_title">Navigation bar</string>
     <string name="navigationbar_settings_summary">Customize navigation style and behavior</string>
     <string name="navbar_general_title">Advanced</string>
     <string name="navigation_bar_left_title">Left-handed mode</string>
@@ -336,8 +337,9 @@
     <string name="smartbar_category">Smartbar</string>
     <string name="smartbar_settings_title">Smartbar settings</string>
     <string name="smartbar_settings_summary">Fully-customizable navigation bar</string>
-    <string name="smartbar_editor_title">Toggle button editor</string>
-    <string name="smartbar_editor_summary">Medium press and drag to change position. Long press to show edit menu. Button position may be changed while menu is showing.\n\Setting a double tap action will delay single tap a bit.</string>
+    <string name="smartbar_editor_title">Start edit mode</string>
+    <string name="smartbar_editor_summary">Open smartbar buttons editor</string>
+    <string name="smartbar_help_policy_notice_summary">When in editor mode, medium press and drag a button to change its position or long press a button to show the edit menu. Button position may be changed while menu is showing.\n\nSetting a double tap action will delay single tap a bit.</string>
     <string name="smartbar_context_menu_position_title">Context buttons layout position</string>
     <string name="smartbar_context_menu_position_summary">Set the position of contextual buttons such as menu and ime selector</string>
     <string name="smartbar_right">Right</string>

@@ -86,6 +86,8 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.smartbar_settings);
 
+        mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.smartbar_help_policy_notice_summary);
+
         int contextVal = Settings.Secure.getIntForUser(getContentResolver(),
                 "smartbar_context_menu_mode", 0, UserHandle.USER_CURRENT);
         mSmartBarContext = (ListPreference) findPreference("smartbar_context_menu_position");
